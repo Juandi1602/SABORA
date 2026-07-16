@@ -78,6 +78,10 @@ node backend/server.js
 ```
 6. Abre `frontend/index.html` en tu navegador (o sírvelo con Live Server)
 
+Acceso de administrador (para probar el panel CRUD):
+Correo: admin@sabora.com
+Contraseña: password
+
 ## 💡 Contexto del proyecto
 
 SABORA resuelve un problema común: elegir un restaurante que realmente se ajuste a restricciones alimenticias específicas (vegano, sin lactosa, fitness, etc.) sin tener que revisar manualmente cada opción. El sistema calcula automáticamente qué tan compatible es cada restaurante con el perfil del usuario.
