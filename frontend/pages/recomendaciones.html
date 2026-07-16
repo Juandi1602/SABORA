@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones — Sabora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/webp" href="/images/logo.webp">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/"><img src="/images/logo.webp" alt="Sabora" class="nav-logo"></a>
+        <div class="nav-links">
+            <a href="/pages/recomendaciones.html">Recomendaciones</a>
+            <a href="/pages/favoritos.html">Mis Favoritos</a>
+            <a href="/pages/perfil.html">Mi Perfil</a>
+            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <div class="recomendaciones-container">
+        <h2 id="tituloRecomendaciones">Tus Recomendaciones</h2>
+        <p class="form-subtitle">Restaurantes seleccionados según tu perfil alimenticio</p>
+
+        <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+        <div class="filtros-container">
+            <div class="filtro-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="busqueda" placeholder="Buscar restaurante..." oninput="filtrar()">
+            </div>
+            <div class="filtro-select">
+                <select id="filtroCocina" onchange="filtrar()">
+                    <option value="">Todas las cocinas</option>
+                    <option value="peruana">Peruana</option>
+                    <option value="italiana">Italiana</option>
+                    <option value="japonesa">Japonesa</option>
+                    <option value="china">China</option>
+                    <option value="mexicana">Mexicana</option>
+                    <option value="americana">Americana</option>
+                    <option value="mediterranea">Mediterránea</option>
+                    <option value="india">India</option>
+                    <option value="francesa">Francesa</option>
+                    <option value="arabe">Árabe</option>
+                    <option value="vegetariana">Vegetariana</option>
+                    <option value="fusion">Fusión</option>
+                </select>
+            </div>
+            <div class="filtro-select">
+                <select id="filtroPrecio" onchange="filtrar()">
+                    <option value="">Todos los precios</option>
+                    <option value="economico">Económico</option>
+                    <option value="moderado">Moderado</option>
+                    <option value="premium">Premium</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="alertError" class="alert-error"></div>
+        <div id="loading" style="text-align:center; padding: 3rem;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; color:var(--primary)"></i>
+            <p>Buscando restaurantes para ti...</p>
+        </div>
+
+        <p id="noResultados" style="display:none; text-align:center; color:var(--gray-500); padding:2rem;">
+            <i class="fa-solid fa-face-sad-tear"></i> No se encontraron restaurantes con esos filtros
+        </p>
+
+        <div class="restaurantes-grid" id="restaurantesGrid"></div>
+        <div id="paginacion" style="display:none; justify-content:center; align-items:center; gap:1rem; margin-top:2rem;"></div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/recomendaciones.js"></script>
+    <script src="/js/accesibilidad.js"></script>
+</body>
+
+</html>

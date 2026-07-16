@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión — Sabora</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/webp" href="/images/logo.webp">
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-container">
+        <!-- LADO IZQUIERDO: IMAGEN -->
+        <div class="auth-image" style="background-image: url('/images/imagen_registro.webp');">
+            <div class="auth-image-overlay">
+                <img src="/images/logo.webp" alt="Sabora" class="auth-logo">
+                <div class="auth-image-text">
+                    <h2>Bienvenido de <span>vuelta</span></h2>
+                    <p>Inicia sesión y descubre los mejores restaurantes para ti</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LADO DERECHO: FORMULARIO -->
+        <div class="auth-form-side">
+            <div class="auth-form-header">
+                <a href="/">
+                    <img src="/images/logo.webp" alt="Sabora" class="auth-form-logo">
+                </a>
+                <p>¿No tienes cuenta? <a href="/pages/registro.html">Registrarse</a></p>
+            </div>
+
+            <div class="auth-form-body">
+                <h2>Iniciar Sesión</h2>
+                <p class="form-subtitle">Ingresa tus credenciales para continuar</p>
+
+                <div id="alertError" class="alert-error"></div>
+                <div id="alertSuccess" class="success-msg"></div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="tu@email.com" maxlength="100">
+                    <span class="error-msg" id="errorEmail">Ingresa un email válido</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="contrasena">Contraseña</label>
+                    <div class="input-password">
+                        <input type="password" id="contrasena" placeholder="Tu contraseña" maxlength="100">
+                        <i class="fa-solid fa-eye" id="togglePassword"></i>
+                    </div>
+                    <span class="error-msg" id="errorContrasena">Ingresa tu contraseña</span>
+                </div>
+
+                <button class="btn-primary btn-full" id="btnLogin" onclick="login()">
+                    Iniciar Sesión
+                </button>
+
+                <p class="form-footer">
+                    ¿No tienes cuenta? <a href="/pages/registro.html">Registrarse →</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/accesibilidad.js"></script>
+</body>
+
+</html>

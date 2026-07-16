@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil — Sabora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/webp" href="/images/logo.webp">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/"><img src="/images/logo.webp" alt="Sabora" class="nav-logo"></a>
+        <div class="nav-links">
+            <a href="/pages/recomendaciones.html">Recomendaciones</a>
+            <a href="/pages/favoritos.html">Mis Favoritos</a>
+            <a href="/pages/perfil.html">Mi Perfil</a>
+            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <div class="perfil-container">
+
+        <!-- VISTA PERFIL -->
+        <div id="vistaPerfil">
+            <div class="perfil-header">
+                <div>
+                    <h2>Mi Perfil Alimenticio</h2>
+                    <p class="form-subtitle">Así están configuradas tus preferencias</p>
+                </div>
+                <button class="btn-primary" onclick="mostrarEdicion()">
+                    <i class="fa-solid fa-pen"></i> Editar Perfil
+                </button>
+            </div>
+
+            <div id="loadingPerfil" style="text-align:center; padding:3rem;">
+                <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; color:var(--primary)"></i>
+            </div>
+
+            <div id="perfilResumen" style="display:none;">
+                <div class="perfil-section">
+                    <h3><i class="fa-solid fa-utensils"></i> Tipo de Dieta</h3>
+                    <span id="vistaDieta" class="badge-cocina"></span>
+                </div>
+
+                <div class="perfil-section">
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Intolerancias y Alergias</h3>
+                    <div id="vistaIntolerancias" class="caracteristicas-grid"></div>
+                </div>
+
+                <div class="perfil-section">
+                    <h3><i class="fa-solid fa-star"></i> Preferencias Adicionales</h3>
+                    <div id="vistaPreferencias" class="caracteristicas-grid"></div>
+                </div>
+
+                <div class="perfil-section">
+                    <h3><i class="fa-solid fa-tag"></i> Rango de Precio</h3>
+                    <span id="vistaPrecio" class="card-precio"></span>
+                </div>
+
+                <div class="perfil-section">
+                    <h3><i class="fa-solid fa-globe"></i> Cocinas Preferidas</h3>
+                    <div id="vistaCocinas" class="caracteristicas-grid"></div>
+                </div>
+            </div>
+
+            <div id="sinPerfil" style="display:none; text-align:center; padding:3rem;">
+                <i class="fa-solid fa-face-sad-tear" style="font-size:3rem; color:var(--gray-300)"></i>
+                <p style="color:var(--gray-500); margin-top:1rem;">No tienes perfil configurado aún</p>
+                <button class="btn-primary" style="margin-top:1rem;" onclick="mostrarEdicion()">
+                    Crear mi perfil
+                </button>
+            </div>
+        </div>
+
+        <!-- FORMULARIO EDICIÓN -->
+        <div id="vistaEdicion" style="display:none;">
+            <div class="perfil-header">
+                <div>
+                    <h2>Editar Perfil Alimenticio</h2>
+                    <p class="form-subtitle">Modifica tus preferencias alimenticias</p>
+                </div>
+                <button class="btn-secondary" onclick="mostrarVista()">
+                    <i class="fa-solid fa-arrow-left"></i> Cancelar
+                </button>
+            </div>
+
+            <div id="alertError" class="alert-error"></div>
+            <div id="alertSuccess" class="success-msg"></div>
+
+            <div class="perfil-section">
+                <h3><i class="fa-solid fa-utensils"></i> Tipo de Dieta</h3>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="tipo_dieta" value="ninguna" checked> Ninguna</label>
+                    <label class="radio-option"><input type="radio" name="tipo_dieta" value="vegetariano"> Vegetariano</label>
+                    <label class="radio-option"><input type="radio" name="tipo_dieta" value="vegano"> Vegano</label>
+                    <label class="radio-option"><input type="radio" name="tipo_dieta" value="pescetariano"> Pescetariano</label>
+                    <label class="radio-option"><input type="radio" name="tipo_dieta" value="flexitariano"> Flexitariano</label>
+                    <label class="radio-option"><input type="radio" name="tipo_dieta" value="fitness"> Fitness</label>
+                    <label class="radio-option"><input type="radio" name="tipo_dieta" value="keto"> Keto</label>
+                    <label class="radio-option"><input type="radio" name="tipo_dieta" value="paleo"> Paleo</label>
+                </div>
+            </div>
+
+            <div class="perfil-section">
+                <h3><i class="fa-solid fa-triangle-exclamation"></i> Intolerancias y Alergias</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-option"><input type="checkbox" id="sin_lactosa"> Sin Lactosa</label>
+                    <label class="checkbox-option"><input type="checkbox" id="sin_gluten"> Sin Gluten</label>
+                    <label class="checkbox-option"><input type="checkbox" id="sin_mariscos"> Sin Mariscos</label>
+                    <label class="checkbox-option"><input type="checkbox" id="sin_frutos_secos"> Sin Frutos Secos</label>
+                    <label class="checkbox-option"><input type="checkbox" id="sin_huevo"> Sin Huevo</label>
+                    <label class="checkbox-option"><input type="checkbox" id="sin_soya"> Sin Soya</label>
+                    <label class="checkbox-option"><input type="checkbox" id="sin_cerdo"> Sin Cerdo</label>
+                    <label class="checkbox-option"><input type="checkbox" id="sin_maiz"> Sin Maíz</label>
+                </div>
+            </div>
+
+            <div class="perfil-section">
+                <h3><i class="fa-solid fa-star"></i> Preferencias Adicionales</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-option"><input type="checkbox" id="halal"> Halal</label>
+                    <label class="checkbox-option"><input type="checkbox" id="kosher"> Kosher</label>
+                    <label class="checkbox-option"><input type="checkbox" id="sin_picante"> Sin Picante</label>
+                    <label class="checkbox-option"><input type="checkbox" id="bajo_sodio"> Bajo en Sodio</label>
+                    <label class="checkbox-option"><input type="checkbox" id="bajo_azucar"> Bajo en Azúcar</label>
+                    <label class="checkbox-option"><input type="checkbox" id="organico"> Orgánico</label>
+                </div>
+            </div>
+
+            <div class="perfil-section">
+                <h3><i class="fa-solid fa-tag"></i> Rango de Precio</h3>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="rango_precio" value="economico"> Económico (S/. 10 - 20)</label>
+                    <label class="radio-option"><input type="radio" name="rango_precio" value="moderado" checked> Moderado (S/. 20 - 50)</label>
+                    <label class="radio-option"><input type="radio" name="rango_precio" value="premium"> Premium (S/. 50+)</label>
+                </div>
+            </div>
+
+            <div class="perfil-section">
+                <h3><i class="fa-solid fa-globe"></i> Tipo de Cocina Preferida</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_peruana"> Peruana</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_italiana"> Italiana</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_japonesa"> Japonesa</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_china"> China</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_mexicana"> Mexicana</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_americana"> Americana</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_mediterranea"> Mediterránea</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_india"> India</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_francesa"> Francesa</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_arabe"> Árabe</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_vegetariana"> Vegetariana</label>
+                    <label class="checkbox-option"><input type="checkbox" id="cocina_fusion"> Fusión</label>
+                </div>
+            </div>
+
+            <button class="btn-primary btn-full" id="btnGuardar" onclick="guardarPerfil()">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+            </button>
+        </div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/perfil.js"></script>
+    <script src="/js/accesibilidad.js"></script>
+</body>
+
+</html>

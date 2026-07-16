@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin — Sabora</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/webp" href="/images/logo.webp">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/"><img src="/images/logo.webp" alt="Sabora" class="nav-logo"></a>
+        <div class="nav-links">
+            <a href="/pages/admin.html">Panel Admin</a>
+            <a href="/" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <div style="max-width:1200px; margin: 2rem auto; padding: 0 1rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
+            <h2>Panel de Administración</h2>
+            <button class="btn-primary" onclick="mostrarFormulario()">
+                <i class="fa-solid fa-plus"></i> Agregar Restaurante
+            </button>
+        </div>
+
+        <div id="alertError" class="alert-error"></div>
+        <div id="alertSuccess" class="success-msg"></div>
+
+        <!-- MODAL FORMULARIO -->
+        <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; overflow-y:auto;">
+            <div style="background:white; max-width:600px; margin:2rem auto; padding:2rem; border-radius:12px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                    <h3 id="modalTitulo">Agregar Restaurante</h3>
+                    <button onclick="cerrarModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--gray-500);">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre *</label>
+                    <input type="text" id="fNombre" placeholder="Nombre del restaurante">
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <input type="text" id="fDescripcion" placeholder="Descripción breve">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Cocina *</label>
+                    <select id="fTipoCocina">
+                        <option value="">Seleccionar...</option>
+                        <option value="peruana">Peruana</option>
+                        <option value="italiana">Italiana</option>
+                        <option value="japonesa">Japonesa</option>
+                        <option value="china">China</option>
+                        <option value="mexicana">Mexicana</option>
+                        <option value="americana">Americana</option>
+                        <option value="mediterranea">Mediterránea</option>
+                        <option value="india">India</option>
+                        <option value="francesa">Francesa</option>
+                        <option value="arabe">Árabe</option>
+                        <option value="vegetariana">Vegetariana</option>
+                        <option value="fusion">Fusión</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" id="fTelefono" placeholder="999999999">
+                </div>
+                <div class="form-group">
+                    <label>Dirección</label>
+                    <input type="text" id="fDireccion" placeholder="Av. Ejemplo 123, Distrito">
+                </div>
+                <div class="form-group">
+                    <label>Rango de Precio *</label>
+                    <select id="fRangoPrecio">
+                        <option value="">Seleccionar...</option>
+                        <option value="economico">Económico</option>
+                        <option value="moderado">Moderado</option>
+                        <option value="premium">Premium</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>URL de Imagen</label>
+                    <input type="text" id="fImagenUrl" placeholder="https://...">
+                </div>
+
+                <div class="perfil-section" style="margin-top:1rem;">
+                    <h3 style="color:var(--primary); font-size:1rem; margin-bottom:1rem;">Tipos de Dieta</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option"><input type="checkbox" id="capto_vegetariano"> Vegetariano</label>
+                        <label class="checkbox-option"><input type="checkbox" id="capto_vegano"> Vegano</label>
+                        <label class="checkbox-option"><input type="checkbox" id="capto_pescetariano"> Pescetariano</label>
+                        <label class="checkbox-option"><input type="checkbox" id="capto_flexitariano"> Flexitariano</label>
+                        <label class="checkbox-option"><input type="checkbox" id="capto_fitness"> Fitness</label>
+                        <label class="checkbox-option"><input type="checkbox" id="capto_keto"> Keto</label>
+                        <label class="checkbox-option"><input type="checkbox" id="capto_paleo"> Paleo</label>
+                    </div>
+                </div>
+
+                <div class="perfil-section" style="margin-top:1rem;">
+                    <h3 style="color:var(--primary); font-size:1rem; margin-bottom:1rem;">Intolerancias y Preferencias</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option"><input type="checkbox" id="csin_lactosa"> Sin Lactosa</label>
+                        <label class="checkbox-option"><input type="checkbox" id="csin_gluten"> Sin Gluten</label>
+                        <label class="checkbox-option"><input type="checkbox" id="csin_mariscos"> Sin Mariscos</label>
+                        <label class="checkbox-option"><input type="checkbox" id="csin_frutos_secos"> Sin Frutos Secos</label>
+                        <label class="checkbox-option"><input type="checkbox" id="csin_huevo"> Sin Huevo</label>
+                        <label class="checkbox-option"><input type="checkbox" id="csin_soya"> Sin Soya</label>
+                        <label class="checkbox-option"><input type="checkbox" id="csin_cerdo"> Sin Cerdo</label>
+                        <label class="checkbox-option"><input type="checkbox" id="csin_maiz"> Sin Maíz</label>
+                        <label class="checkbox-option"><input type="checkbox" id="chalal"> Halal</label>
+                        <label class="checkbox-option"><input type="checkbox" id="ckosher"> Kosher</label>
+                        <label class="checkbox-option"><input type="checkbox" id="csin_picante"> Sin Picante</label>
+                        <label class="checkbox-option"><input type="checkbox" id="cbajo_sodio"> Bajo Sodio</label>
+                        <label class="checkbox-option"><input type="checkbox" id="cbajo_azucar"> Bajo Azúcar</label>
+                        <label class="checkbox-option"><input type="checkbox" id="corganico"> Orgánico</label>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+                    <button class="btn-primary btn-full" id="btnGuardar" onclick="guardarRestaurante()">
+                        <i class="fa-solid fa-floppy-disk"></i> Guardar
+                    </button>
+                    <button class="btn-secondary btn-full" onclick="cerrarModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLA -->
+        <div id="loading" style="text-align:center; padding:3rem;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; color:var(--primary)"></i>
+        </div>
+
+        <div id="tablaContainer" style="display:none;">
+            <table id="tablaRestaurantes" style="width:100%; border-collapse:collapse; background:white; border-radius:12px; overflow:hidden; box-shadow:var(--shadow);">
+                <thead style="background:var(--primary); color:white;">
+                    <tr>
+                        <th style="padding:1rem; text-align:left;">Nombre</th>
+                        <th style="padding:1rem; text-align:left;">Cocina</th>
+                        <th style="padding:1rem; text-align:left;">Precio</th>
+                        <th style="padding:1rem; text-align:left;">Dirección</th>
+                        <th style="padding:1rem; text-align:center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/admin.js"></script>
+    <script src="/js/accesibilidad.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones — Sabora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/webp" href="/images/logo.webp">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/"><img src="/images/logo.webp" alt="Sabora" class="nav-logo"></a>
+        <div class="nav-links">
+            <a href="/pages/recomendaciones.html">Recomendaciones</a>
+            <a href="/pages/favoritos.html">Mis Favoritos</a>
+            <a href="/pages/perfil.html">Mi Perfil</a>
+            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <div class="recomendaciones-container">
+        <h2>Mis Favoritos</h2>
+        <p class="form-subtitle">Restaurantes que has guardado</p>
+
+        <div id="alertError" class="alert-error"></div>
+        <div id="loading" style="text-align:center; padding: 3rem;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; color:var(--primary)"></i>
+            <p>Cargando favoritos...</p>
+        </div>
+
+        <p id="noResultados" style="display:none; text-align:center; color:var(--gray-500); padding:2rem;">
+            <i class="fa-solid fa-heart-crack"></i> Aún no tienes restaurantes favoritos
+        </p>
+
+        <div class="restaurantes-grid" id="favoritosGrid"></div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/favoritos.js"></script>
+    <script src="/js/accesibilidad.js"></script>
+</body>
+
+</html>

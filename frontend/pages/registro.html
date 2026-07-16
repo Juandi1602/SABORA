@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse — Sabora</title>
+    <link rel="icon" type="image/webp" href="/images/logo.webp">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-container">
+        <!-- LADO IZQUIERDO: IMAGEN -->
+        <div class="auth-image" style="background-image: url('/images/imagen_registro.webp');">
+            <div class="auth-image-overlay">
+                <img src="/images/logo.webp" alt="Sabora" class="auth-logo">
+                <div class="auth-image-text">
+                    <h2>Descubre restaurantes <span>hechos para ti</span></h2>
+                    <p>Regístrate y obtén recomendaciones personalizadas según tu perfil alimenticio</p>
+                </div>
+            </div>
+        </div>
+        <!-- LADO DERECHO: FORMULARIO -->
+        <div class="auth-form-side">
+            <div class="auth-form-header">
+                <a href="/">
+                    <img src="/images/logo.webp" alt="Sabora" class="auth-form-logo">
+                </a>
+                <p>¿Ya tienes cuenta? <a href="/pages/login.html">Iniciar Sesión</a></p>
+            </div>
+
+            <div class="auth-form-body">
+                <h2>Crea tu cuenta</h2>
+                <p class="form-subtitle">Comienza a descubrir restaurantes para ti</p>
+
+                <div id="alertError" class="alert-error"></div>
+                <div id="alertSuccess" class="success-msg"></div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" placeholder="Ej. Juan" maxlength="50">
+                    <span class="error-msg" id="errorNombre">Solo letras, mínimo 2 caracteres</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" placeholder="Ej. Pérez" maxlength="50">
+                    <span class="error-msg" id="errorApellido">Solo letras, mínimo 2 caracteres</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="tu@email.com" maxlength="100">
+                    <span class="error-msg" id="errorEmail">Ingresa un email válido</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="contrasena">Contraseña</label>
+                    <div class="input-password">
+                        <input type="password" id="contrasena" placeholder="Mínimo 8 caracteres" maxlength="100">
+                        <i class="fa-solid fa-eye" id="togglePassword"></i>
+                    </div>
+                    <span class="error-msg" id="errorContrasena">Mínimo 8 caracteres</span>
+                </div>
+
+                <button class="btn-primary btn-full" id="btnRegistro" onclick="registrar()">
+                    Registrarse
+                </button>
+
+                <p class="form-footer">
+                    ¿Ya tienes cuenta? <a href="/pages/login.html">Iniciar Sesión →</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/registro.js"></script>
+</body>
+
+</html>

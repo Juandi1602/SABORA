@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle — Sabora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/webp" href="/images/logo.webp">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/"><img src="/images/logo.webp" alt="Sabora" class="nav-logo"></a>
+        <div class="nav-links">
+            <a href="/pages/recomendaciones.html">Recomendaciones</a>
+            <a href="/pages/favoritos.html">Mis Favoritos</a>
+            <a href="/pages/perfil.html">Mi Perfil</a>
+            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <div class="detalle-container">
+        <a href="/pages/recomendaciones.html" class="btn-back">
+            <i class="fa-solid fa-arrow-left"></i> Volver a recomendaciones
+        </a>
+
+        <div id="loading" style="text-align:center; padding: 3rem;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; color:var(--primary)"></i>
+            <p>Cargando restaurante...</p>
+        </div>
+
+        <div id="detalleContent" style="display:none;">
+            <div class="detalle-header">
+                <div class="detalle-info">
+                    <h1 id="nombre"></h1>
+                    <p id="descripcion" class="detalle-descripcion"></p>
+                    <div class="detalle-badges">
+                        <span class="badge-cocina" id="tipoCocina"></span>
+                        <span class="card-precio" id="rangoPrecio"></span>
+                        <span class="card-puntaje" id="puntajeDetalle"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detalle-grid">
+                <div class="detalle-card">
+                    <h3><i class="fa-solid fa-circle-info"></i> Información</h3>
+                    <div class="detalle-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span id="telefono"></span>
+                    </div>
+                    <div class="detalle-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="direccion"></span>
+                    </div>
+                </div>
+
+                <div class="detalle-card">
+                    <h3><i class="fa-solid fa-check-circle"></i> Características</h3>
+                    <div id="caracteristicas" class="caracteristicas-grid"></div>
+                </div>
+
+                <div class="detalle-card" style="grid-column: 1 / -1;">
+                    <h3><i class="fa-solid fa-map-location-dot"></i> Ubicación</h3>
+                    <div id="mapaContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/detalle.js"></script>
+    <script src="/js/accesibilidad.js"></script>
+</body>
+
+</html>
