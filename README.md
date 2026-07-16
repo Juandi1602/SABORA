@@ -39,20 +39,29 @@ frontend/
 
 ## 📸 Capturas de pantalla
 
-### Landing y autenticación
-| Landing | Login | Registro |
-|---|---|---|
-| ![Landing](screenshots/landing.png) | ![Login](screenshots/login.png) | ![Registro](screenshots/registro.png) |
+### Landing
+![Landing](screenshots/landing.png)
 
-### Recomendaciones y detalle
-| Recomendaciones (match-score) | Detalle de restaurante | Favoritos |
-|---|---|---|
-| ![Recomendaciones](screenshots/recomendaciones.png) | ![Detalle](screenshots/detalle.png) | ![Favoritos](screenshots/favoritos.png) |
+### Login
+![Login](screenshots/login.png)
 
-### Panel de administración
-| Listado (CRUD) | Agregar restaurante |
-|---|---|
-| ![Admin](screenshots/admin.png) | ![Agregar](screenshots/admin-agregar.png) |
+### Registro
+![Registro](screenshots/registro.png)
+
+### Recomendaciones (match-score)
+![Recomendaciones](screenshots/recomendaciones.png)
+
+### Detalle de restaurante
+![Detalle](screenshots/detalle.png)
+
+### Favoritos
+![Favoritos](screenshots/favoritos.png)
+
+### Panel de administración (CRUD)
+![Admin](screenshots/admin.png)
+
+### Agregar restaurante
+![Agregar](screenshots/admin-agregar.png)
 
 ## 🚀 Cómo ejecutar el proyecto
 
